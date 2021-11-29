@@ -10,6 +10,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Returns avatar for based on user message
 public class AvatarCommand implements ICommand {
     public String getHelp() {
         return "";
@@ -20,6 +21,8 @@ public class AvatarCommand implements ICommand {
         String name = ctx.getMessage().getContentRaw();
         Message message = ctx.getMessage();
         List<String> args = ctx.getArgs();
+
+        // Handles alias formatting, can be cleaned up
         if(message.getMentionedMembers().size()==0 && args.size() > 0) {
             if (name.startsWith(".av")){
                 ctx.getChannel().sendMessage("Usage: `" + prefix + "av [mentionable member]`").queue();
@@ -29,17 +32,23 @@ public class AvatarCommand implements ICommand {
             }
             return;
         }
+
+        // Gets mentioned person
         String person = ctx.getMember().getEffectiveName();
         String url = ctx.getMember().getUser().getEffectiveAvatarUrl();
         if(!ctx.getMessage().getMentionedMembers().isEmpty()) {
             person = ctx.getMessage().getMentionedMembers().get(0).getEffectiveName();
             url = ctx.getMessage().getMentionedMembers().get(0).getUser().getAvatarUrl();
         }
+
+        // For more fancy feedback
         EmbedBuilder embed = new EmbedBuilder()
                 .setColor(new Color(255,255,255))
                 .setDescription("**"+person + "'s avatar**")
                 .setImage(url);
         ctx.getChannel().sendMessage(embed.build()).queue();
+
+        // Logs it [outdated Logger, need to fix]
         System.out.println("-Avatar command ran by " + ctx.getMember().getUser().getAsTag() +" in the "+ctx.getGuild().getName() + " guild");
     }
 

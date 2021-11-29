@@ -9,9 +9,9 @@ import net.dv8tion.jda.api.exceptions.ErrorResponseException;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+// Private messaging, used to bypass when user is blocked
+// Needs fixing, quite sloppy
 public class MessageCommand implements ICommand {
-
-
     public void handle(final CommandsContext ctx){
         final String prefix = Prefix.PREFIXES.get(ctx.getGuild().getIdLong());
         if(ctx.getMember().hasPermission(Permission.ADMINISTRATOR)){

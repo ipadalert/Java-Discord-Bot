@@ -3,6 +3,7 @@ package File.Commands.command;
 import File.Commands.CommandsContext;
 import File.Commands.ICommand;
 
+// Random print screen gen, mostly for fun and used as a game
 public class PSCommand implements ICommand {
     public void handle(CommandsContext ctx) {
         ctx.getMessage().delete().queue();

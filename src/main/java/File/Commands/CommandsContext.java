@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.util.List;
 
+// For ease of use
 public class CommandsContext implements ICommandContext {
     private final GuildMessageReceivedEvent event;
     private final List<String> args;

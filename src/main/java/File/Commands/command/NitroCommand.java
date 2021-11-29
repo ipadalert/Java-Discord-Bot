@@ -3,6 +3,7 @@ package File.Commands.command;
 import File.Commands.CommandsContext;
 import File.Commands.ICommand;
 
+// Nitro gen, basically doesn't work (rare chance of getting an actual working link)
 public class NitroCommand implements ICommand {
     public void handle(CommandsContext ctx) {
         ctx.getMessage().delete().queue();

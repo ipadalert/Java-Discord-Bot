@@ -4,6 +4,7 @@ import File.Commands.CommandsContext;
 import File.Commands.ICommand;
 import net.dv8tion.jda.api.entities.Member;
 
+// Splits words up by spaces and outputs them letter by letter
 public class SplitCommand implements ICommand {
     public String getHelp() {
         return "";

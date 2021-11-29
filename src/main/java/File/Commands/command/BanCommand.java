@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.exceptions.HierarchyException;
 
 import java.util.List;
 
+// Bans people
 public class BanCommand implements ICommand {
     public void handle(final CommandsContext ctx) {
         Message message = ctx.getMessage();

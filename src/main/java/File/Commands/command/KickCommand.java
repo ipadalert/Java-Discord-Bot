@@ -8,6 +8,8 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.exceptions.HierarchyException;
 
 import java.util.List;
+
+// Kicks people
 public class KickCommand implements ICommand {
     public void handle(final CommandsContext ctx) {
         Message message = ctx.getMessage();

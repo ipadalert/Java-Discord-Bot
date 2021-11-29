@@ -4,15 +4,16 @@ import File.database.SQLiteDataSource;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.requests.GatewayIntent;
-
 import javax.security.auth.login.LoginException;
 import java.sql.SQLException;
 
+// Can be cleaned up, probably should be
 public class Bot {
     public Bot() throws LoginException, SQLException {
         SQLiteDataSource.getConnection();
         OnlineStatus status = OnlineStatus.DO_NOT_DISTURB;
-        new JDABuilder();
+
+        // Token goes here
         JDABuilder.createDefault("",
                 GatewayIntent.DIRECT_MESSAGE_REACTIONS,
                 GatewayIntent.DIRECT_MESSAGE_TYPING,

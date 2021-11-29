@@ -6,11 +6,13 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageHistory;
 import net.dv8tion.jda.api.entities.TextChannel;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+// Message purging, only deletes messages up to 2 weeks old, needs fixing
 public class PurgeCommand implements ICommand {
-    public void handle(CommandsContext ctx) {
+    public void handle(@NotNull CommandsContext ctx) {
         TextChannel channel = ctx.getChannel();
         List<String> args = ctx.getArgs();
         if(ctx.getMember().hasPermission(Permission.ADMINISTRATOR)) {

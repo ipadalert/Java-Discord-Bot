@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.exceptions.ErrorResponseException;
 
+// Mass dms people and reports back on who did not receive the message (only should be used in smaller servers)
 public class DmCommand implements ICommand {
     public void handle(final CommandsContext ctx)  {
         final String prefix = Prefix.PREFIXES.get(ctx.getGuild().getIdLong());

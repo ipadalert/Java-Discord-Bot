@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+// Prefix changer for guild specific prefixes.
 public class SetPrefixCommand implements ICommand {
     public void handle(CommandsContext ctx) {
         TextChannel channel = ctx.getChannel();
@@ -36,6 +37,8 @@ public class SetPrefixCommand implements ICommand {
     public String getHelp() {
         return "";
     }
+
+    // Uses SQL for db lang, updates prefix based on user input
     private void updatePrefix(long guildId, String newPrefix){
         Prefix.PREFIXES.put(guildId, newPrefix);
         try (final PreparedStatement preparedStatement = SQLiteDataSource

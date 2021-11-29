@@ -11,6 +11,8 @@ public class HelpCommand implements ICommand {
 
     private final CommandManager manager;
 
+    // Displays commands, help for more command information is not implemented
+    // (Used for personal needs, not really inclusive to other users)
     public HelpCommand(CommandManager manager) {
         this.manager = manager;
     }

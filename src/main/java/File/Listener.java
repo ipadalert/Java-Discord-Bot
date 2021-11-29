@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// For "listening" events
 public class Listener extends ListenerAdapter {
     private static final Logger LOGGER = LoggerFactory.getLogger(Listener.class);
     private final CommandManager manager = new CommandManager();

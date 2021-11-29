@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
+// Where client handles commands
 public class CommandManager {
     private final List<ICommand> commands = new ArrayList<>();
     public CommandManager(){
@@ -48,6 +49,8 @@ public class CommandManager {
         }
         return null;
     }
+
+    // Main handler for commands
     void handle(GuildMessageReceivedEvent event, String prefix){
         String[] split = event.getMessage().getContentRaw()
                 .replaceFirst("(?i)"+ Pattern.quote(prefix),"")

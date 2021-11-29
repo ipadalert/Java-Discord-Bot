@@ -4,6 +4,7 @@ import File.Commands.CommandsContext;
 import File.Commands.ICommand;
 import net.dv8tion.jda.api.JDA;
 
+// Not used, here for testing
 public class PingCommand implements ICommand {
     @Override
     public void handle(final CommandsContext ctx) {

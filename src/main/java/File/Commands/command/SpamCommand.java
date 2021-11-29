@@ -4,7 +4,7 @@ import File.Commands.CommandsContext;
 import File.Commands.ICommand;
 import net.dv8tion.jda.api.entities.Member;
 
-
+// Spams a message
 public class SpamCommand implements ICommand {
     public String getName() {
         return "spam";

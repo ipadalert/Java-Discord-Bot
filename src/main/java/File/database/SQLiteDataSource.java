@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+// See duncte123, I'm not that familiar with SQL
 public class SQLiteDataSource {
     private static final Logger LOGGER = LoggerFactory.getLogger(SQLiteDataSource.class);
     private static final HikariConfig config = new HikariConfig();

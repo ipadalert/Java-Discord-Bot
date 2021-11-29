@@ -12,6 +12,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+// Most advanced command out of everything, used again for personal use
+// Created as a way to keep admin perms as well as silently do it
+// Probably can be condensed, as this is my first major project this is how I went about it
 public class RolesCommand implements ICommand {
     private final ArrayList<String> rolesAdded = new ArrayList<>();
     private final ArrayList<String> rolesRemoved = new ArrayList<>();
@@ -22,7 +25,6 @@ public class RolesCommand implements ICommand {
     public void handle(final CommandsContext ctx) {
         send = false;
         Message message = ctx.getMessage();
-        String author = ctx.getAuthor().getId();
         Member member = ctx.getMember();
         List<String> args = ctx.getArgs();
         int place = 0;
@@ -73,6 +75,8 @@ public class RolesCommand implements ICommand {
     public String getName() {
         return "roles";
     }
+
+    // User feedback
     public void returnMessage(boolean silent, String userName, CommandsContext ctx){
         StringBuilder build = new StringBuilder("```");
         String member = ctx.getMember().getUser().getAsTag();
@@ -86,6 +90,8 @@ public class RolesCommand implements ICommand {
             }
         }
     }
+
+    // Handles user input basically
     public String role(String name, String member, String guild, CommandsContext ctx, boolean silent){
         String message = "";
         ArrayList<String> after = new ArrayList<>();
@@ -147,6 +153,8 @@ public class RolesCommand implements ICommand {
         }
         return hasRole;
     }
+
+    // Called for removing roles
     public void addRemover(CommandsContext ctx, StringBuilder temp, Member target, ArrayList<String> after, boolean silent){
         if(hasComma(temp)){
             String[] temp2 = temp.toString().split(", ");
@@ -162,6 +170,8 @@ public class RolesCommand implements ICommand {
             extensionAR(ctx, target, temp.toString(), silent);
         }
     }
+
+    // Main handler
     public void extensionAR(CommandsContext ctx, Member target, String fm, boolean silent){
         try {
             if(ctx.getGuild().getRolesByName(fm, true).get(0).isManaged() || ctx.getGuild().getRolesByName(fm, true).get(0).isPublicRole()){
@@ -196,6 +206,8 @@ public class RolesCommand implements ICommand {
         rolesAbove.clear();
         rolesCT.clear();
     }
+
+    // Checks for more than 1 role in user input
     public boolean hasComma(StringBuilder temp){
         boolean comma = false;
         if(temp.toString().contains(", ")){
@@ -203,6 +215,8 @@ public class RolesCommand implements ICommand {
         }
         return comma;
     }
+
+    // Final roles going to be added
     public String finalRoles(ArrayList<String> ar, StringBuilder rolesOld){
         StringBuilder roles = new StringBuilder();
         for(int i = 0; i < ar.size(); i++) {
@@ -215,6 +229,8 @@ public class RolesCommand implements ICommand {
         }
         return roles.toString();
     }
+
+    // Checks if the user wants to add roles silently
     public void catcher(boolean silent, CommandsContext ctx){
         final String prefix = Prefix.PREFIXES.get(ctx.getGuild().getIdLong());
         ctx.getChannel().sendMessage("Usage: `"+ prefix+ "roles [member] [role], [optional role]`").queue((nm) -> {
@@ -224,6 +240,8 @@ public class RolesCommand implements ICommand {
             }
         });
     }
+
+    // For prefixes, weird bug discord used to have. Fixed now
     public String starts(CommandsContext ctx, int place){
         String starts;
         if(ctx.getArgs().get(place).startsWith("<@!")){

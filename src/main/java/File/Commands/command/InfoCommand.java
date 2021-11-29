@@ -11,6 +11,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
+// Displays info for users
 public class InfoCommand implements ICommand {
     public void handle(final CommandsContext ctx) {
         ctx.getMessage().delete().queue();
@@ -21,6 +22,7 @@ public class InfoCommand implements ICommand {
             });
         }
         else{
+            // Fancy formatting for reply
             DateTimeFormatter join = DateTimeFormatter.ofPattern("M-d-yyyy h:mm:ss a").withZone(ZoneId.of("America/New_York"));
             Member person = ctx.getMessage().getMentionedMembers().get(0);
             EmbedBuilder eb = new EmbedBuilder()
@@ -43,6 +45,7 @@ public class InfoCommand implements ICommand {
         return "";
     }
 
+    // Sloppy parameters, needs fixing
     public String starts(CommandsContext ctx, int place){
         String starts;
         if(ctx.getArgs().get(place).startsWith("<@!")){
